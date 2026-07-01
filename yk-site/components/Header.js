@@ -1,7 +1,7 @@
 "use client";
 
 export default function Header({ settings, active }) {
-  const brand = settings?.brand_name || "Yamini Kalluri";
+  const brand = settings?.brand_name || "Likhitha Gopi";
 
   const navItems = [
     { href: "/", label: settings?.nav_home || "Home", key: "home" },

@@ -1,7 +1,7 @@
 import "@/components/admin/admin.css";
 import AdminNav from "@/components/admin/AdminNav";
 
-export const metadata = { title: "Admin — Yamini Kalluri" };
+export const metadata = { title: "Admin —  Likitha Gopi" };
 
 export default function AdminLayout({ children }) {
   return (

@@ -29,7 +29,7 @@ export default function LoginPage() {
   return (
     <div className="admin-login-box">
       <h1 className="admin-h1">Admin Login</h1>
-      <p className="admin-sub">Sign in to manage the Yamini Kalluri site.</p>
+      <p className="admin-sub">Sign in to manage the Likhitha Gopi site.</p>
       <form onSubmit={handleSubmit}>
         <div className="admin-field">
           <label>Email</label>
