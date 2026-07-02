@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import ImageUploader from "./ImageUploader";
+import VideoUploader from "./VideoUploader";
 
-// field types: "text" | "textarea" | "image" | "list" (newline-separated strings) | "json" (advanced array/object editor)
+// field types: "text" | "textarea" | "image" | "video" | "list" (newline-separated strings) | "json" (advanced array/object editor)
 export default function PageEditor({ slug, initialContent, fields }) {
   const [content, setContent] = useState(initialContent || {});
   const [saving, setSaving] = useState(false);
@@ -73,6 +74,9 @@ export default function PageEditor({ slug, initialContent, fields }) {
             )}
             {f.type === "image" && (
               <ImageUploader value={content[f.key]} onChange={(url) => update(f.key, url)} />
+            )}
+            {f.type === "video" && (
+              <VideoUploader value={content[f.key]} onChange={(url) => update(f.key, url)} />
             )}
           </div>
         </div>

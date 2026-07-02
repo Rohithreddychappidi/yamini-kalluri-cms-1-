@@ -6,7 +6,7 @@
 //   Signing mode: Unsigned
 //   Copy the preset name into NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
 
-export async function uploadToCloudinary(file) {
+export async function uploadToCloudinary(file, resourceType = "image") {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
@@ -22,7 +22,7 @@ export async function uploadToCloudinary(file) {
   formData.append("folder", "yamini-kalluri-site");
 
   const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+    `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`,
     { method: "POST", body: formData }
   );
 
@@ -33,4 +33,9 @@ export async function uploadToCloudinary(file) {
 
   const data = await res.json();
   return data.secure_url; // store this URL in Supabase
+}
+
+// Convenience wrapper for video uploads (hero background video, etc.)
+export async function uploadVideoToCloudinary(file) {
+  return uploadToCloudinary(file, "video");
 }

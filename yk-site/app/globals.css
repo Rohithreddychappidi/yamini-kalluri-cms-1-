@@ -37,8 +37,8 @@ body{
 }
 
 @keyframes pageFade{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
+  from{opacity:0;}
+  to{opacity:1;}
 }
 
 img{max-width:100%;display:block;}
@@ -169,6 +169,51 @@ nav.main a.active{
     font-size:0.7rem;letter-spacing:.2em;text-transform:uppercase;
     cursor:pointer;color:var(--warm-black);
   }
+}
+
+/* ---------- home page: fixed background + glass scroll layer ---------- */
+
+/* Fixed, full-viewport background image. Sits behind everything and never scrolls. */
+.home-fixed-bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.home-main{
+  position:relative;
+  z-index:1;
+}
+
+/* Hero video layer: fully covers the fixed background image while the Hero is on screen */
+.hero-video-section{
+  position:relative;
+  z-index:2;
+}
+
+.hero-video-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+.hero-video-section .wrap{
+  z-index:1;
+}
+
+/* Glass layer: sits over the fixed background image. No tint/shade — the
+   background image stays fully clear. Text stays legible since band-dark /
+   ph / g-item keep their own solid backgrounds (see rules further below). */
+.home-glass{
+  position:relative;
+  z-index:1;
+  background:transparent;
 }
 
 /* ---------- hero ---------- */
