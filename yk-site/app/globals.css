@@ -218,7 +218,7 @@ nav.main a.active{
 
 /* ---------- hero ---------- */
 .hero{
-  min-height:calc(100vh - 83px);
+  min-height:100vh;
   padding:7rem 0;
   text-align:center;
   position:relative;
