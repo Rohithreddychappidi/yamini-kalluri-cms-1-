@@ -11,7 +11,8 @@ const fields = [
   { key: "hero_link_label", label: "Hero Link Label", type: "text" },
   { key: "hero_link_url", label: "Hero Link URL", type: "text" },
   { key: "videos_heading", label: "Videos — Heading", type: "text" },
-  { key: "video_embed_url", label: "Video Embed URL (YouTube embed link)", type: "text" },
+  { key: "video_embed_url", label: "Video 1 URL (paste any YouTube link — watch, share, or embed)", type: "text" },
+  { key: "video_embed_url_2", label: "Video 2 URL (paste any YouTube link — watch, share, or embed)", type: "text" },
   { key: "channel_url", label: "YouTube Channel URL", type: "text" },
 ];
 
@@ -20,7 +21,11 @@ export default async function AdminMediaPage() {
   return (
     <div>
       <h1 className="admin-h1">Media Page</h1>
-      <p className="admin-sub">Edit the hero text, video embed, and the photo gallery tiles below.</p>
+      <p className="admin-sub">
+        Edit the hero text, video embeds, and the photo gallery tiles below. You can paste a
+        regular YouTube link (watch page, share link, youtu.be, etc.) into either Video field —
+        it's converted automatically.
+      </p>
       <PageEditor slug="media" initialContent={content} fields={fields} />
       <h2 style={{ marginTop: "2.5rem" }}>Photo Gallery Tiles</h2>
       <GalleryManager initialItems={gallery} />

@@ -42,6 +42,38 @@ export default async function TheArtistPage() {
           </div>
         </section>
 
+        {(content.education?.length > 0 || content.certificates?.length > 0 || content.work_experience?.length > 0) && (
+          <>
+            <hr className="rule" />
+            <section>
+              <div className="wrap">
+                <span className="eyebrow accent">Background</span>
+                <h2 style={{ margin: "0.6rem 0 2.4rem" }}>{content.credentials_heading || "Education, Certificates & Work Experience"}</h2>
+                <div className="cols-3">
+                  <div>
+                    <h3 style={{ marginBottom: "1.2rem" }}>{content.education_heading || "Education"}</h3>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.9rem", fontSize: "0.95rem", color: "var(--masala)" }}>
+                      {(content.education || []).map((e, i) => <li key={i}>{e}</li>)}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 style={{ marginBottom: "1.2rem" }}>{content.certificates_heading || "Certificates"}</h3>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.9rem", fontSize: "0.95rem", color: "var(--masala)" }}>
+                      {(content.certificates || []).map((c, i) => <li key={i}>{c}</li>)}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 style={{ marginBottom: "1.2rem" }}>{content.work_experience_heading || "Work Experience"}</h3>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.9rem", fontSize: "0.95rem", color: "var(--masala)" }}>
+                      {(content.work_experience || []).map((w, i) => <li key={i}>{w}</li>)}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
         <hr className="rule" />
 
         <section>

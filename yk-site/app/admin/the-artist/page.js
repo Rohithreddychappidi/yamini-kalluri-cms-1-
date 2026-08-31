@@ -15,6 +15,13 @@ const fields = [
   { key: "about_paragraph_4", label: "About — Paragraph 4", type: "textarea" },
   { key: "photo_1", label: "Photo 1", type: "image" },
   { key: "photo_2", label: "Photo 2", type: "image" },
+  { key: "credentials_heading", label: "Background — Section Heading", type: "text" },
+  { key: "education_heading", label: "Education Column — Heading", type: "text" },
+  { key: "education", label: "Education (one entry per line)", type: "list" },
+  { key: "certificates_heading", label: "Certificates Column — Heading", type: "text" },
+  { key: "certificates", label: "Certificates (one entry per line)", type: "list" },
+  { key: "work_experience_heading", label: "Work Experience Column — Heading", type: "text" },
+  { key: "work_experience", label: "Work Experience (one entry per line)", type: "list" },
   { key: "inside_heading", label: "Inside The Artist — Section Heading", type: "text" },
   { key: "awards_heading", label: "Awards Column — Heading", type: "text" },
   { key: "awards", label: "Awards & Achievements", type: "list" },
@@ -28,7 +35,10 @@ export default async function AdminTheArtistPage() {
   return (
     <div>
       <h1 className="admin-h1">The Artist Page</h1>
-      <p className="admin-sub">Edit the bio hero, copy, and photos.</p>
+      <p className="admin-sub">
+        Edit the bio hero, copy, photos, and background — education, certificates, and work
+        experience live here now instead of the Media page.
+      </p>
       <PageEditor slug="the-artist" initialContent={content} fields={fields} />
     </div>
   );

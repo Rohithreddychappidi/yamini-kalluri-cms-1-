@@ -14,6 +14,8 @@ export default async function HomePage() {
 
   const pressImages = writings.slice(0, 8);
   const bgImage = content.page_bg_image || "/assets/hero-bg.png";
+  const heroBgImage = content.hero_image || "/assets/hero-bg.png";
+  const heroBgImageMobile = content.hero_image_mobile || heroBgImage;
 
   return (
     <>
@@ -22,7 +24,13 @@ export default async function HomePage() {
 
       <Header settings={settings} active="home" />
       <main className="home-main">
-        <section className="hero hero-video-section">
+        <section
+          className="hero hero-video-section"
+          style={{
+            "--hero-bg-image": `url('${heroBgImage}')`,
+            "--hero-bg-image-mobile": `url('${heroBgImageMobile}')`,
+          }}
+        >
           {content.hero_video ? <HeroVideo src={content.hero_video} /> : null}
           <div className="wrap">
             <h1>{content.hero_title}</h1>
