@@ -39,12 +39,15 @@ export default async function MediaPage() {
           <div className="wrap">
             <div className="gallery">
               {photos.map((item) => (
-                <div
-                  className="g-item"
-                  key={item.id}
-                  style={item.image_url ? { backgroundImage: `url(${item.image_url})` } : undefined}
-                >
-                  <span>{item.label}</span>
+                <div className={`g-item ${item.image_url ? "has-photo" : "no-photo"}`} key={item.id}>
+                  {item.image_url ? (
+                    <>
+                      <img src={item.image_url} alt={item.label || ""} />
+                      {item.label && <span className="g-caption">{item.label}</span>}
+                    </>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
                 </div>
               ))}
             </div>

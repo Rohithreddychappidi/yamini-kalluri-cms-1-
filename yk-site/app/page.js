@@ -107,7 +107,7 @@ export default async function HomePage() {
               <h2 style={{ margin: "0.6rem 0 2rem" }}>{content.connected_heading}</h2>
               <div className="gallery">
                 {(content.connected_tiles || []).map((tile, i) => (
-                  <div className="g-item" key={i}><span>{tile}</span></div>
+                  <div className="g-item no-photo" key={i}><span>{tile}</span></div>
                 ))}
               </div>
             </div>

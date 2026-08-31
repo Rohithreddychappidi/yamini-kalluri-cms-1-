@@ -788,19 +788,26 @@ body.mono-page .press-item a.src:hover{
 
 /* ---------- gallery ---------- */
 .gallery{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:0.5rem;
+  column-count:4;
+  column-gap:0.6rem;
 }
-@media (max-width:880px){.gallery{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:880px){.gallery{column-count:2;}}
+@media (max-width:480px){.gallery{column-count:1;}}
 
 .g-item{
-  aspect-ratio:1/1;
   background:var(--chrome-white);
   position:relative;
   overflow:hidden;
+  break-inside:avoid;
+  margin-bottom:0.6rem;
 }
-.g-item span{
+
+/* Placeholder tiles (no photo uploaded yet, or the Stay Connected labels
+   on the home page) stay square with the label centered. */
+.g-item.no-photo{
+  aspect-ratio:1/1;
+}
+.g-item.no-photo span{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--display);
@@ -813,6 +820,23 @@ body.mono-page .press-item a.src:hover{
 .g-item:nth-child(3n+1){background:#D8D2C6;}
 .g-item:nth-child(3n+2){background:var(--chrome-white);}
 .g-item:nth-child(3n){background:#E2DCD0;}
+
+/* Photo tiles: the image renders at its own natural aspect ratio — never
+   cropped or zoomed, whatever dimensions were uploaded. */
+.g-item.has-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.g-item.has-photo .g-caption{
+  display:block;
+  font-family:var(--display);
+  font-style:italic;
+  color:var(--masala);
+  font-size:0.8rem;
+  padding:0.6rem 0.2rem 0;
+  text-align:left;
+}
 
 /* ---------- video block ---------- */
 .video-frame{
@@ -925,5 +949,3 @@ footer.site .f-bottom{
 /* --- CMS additions: fill placeholder boxes with real images when available --- */
 .ph{position:relative;}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.g-item{background-size:contain;background-position:center;background-repeat:no-repeat;}
-.g-item img{display:none;}
