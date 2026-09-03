@@ -18,7 +18,7 @@ export default async function MediaPage() {
 
   return (
     <>
-      <Header settings={settings} active="media" />
+      <Header settings={settings} active="media" theme="light" />
       <main>
         <section className="page-hero">
           <div className="wrap">

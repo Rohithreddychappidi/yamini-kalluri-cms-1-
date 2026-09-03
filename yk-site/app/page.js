@@ -22,7 +22,7 @@ export default async function HomePage() {
       {/* Fixed, non-scrolling background image for the whole home page */}
       <div className="home-fixed-bg" style={{ backgroundImage: `url('${bgImage}')` }} />
 
-      <Header settings={settings} active="home" />
+      <Header settings={settings} active="home" theme="light" />
       <main className="home-main">
         <section
           className="hero hero-video-section"
@@ -39,7 +39,7 @@ export default async function HomePage() {
         </section>
 
         <div className="home-glass">
-          <section className="tight">
+          <section className="tight about-light">
             <div className="wrap split">
               <div className="ph" data-cap={content.about_image_caption}>
                 {content.about_image ? (
@@ -104,7 +104,7 @@ export default async function HomePage() {
           <section className="tight">
             <div className="wrap">
               <span className="eyebrow accent">Stay Connected</span>
-              <h2 style={{ margin: "0.6rem 0 2rem" }}>{content.connected_heading}</h2>
+              <h2 style={{ margin: "0.6rem 0 2rem", color: "#fff" }}>{content.connected_heading}</h2>
               <div className="gallery">
                 {(content.connected_tiles || []).map((tile, i) => (
                   <div className="g-item no-photo" key={i}><span>{tile}</span></div>

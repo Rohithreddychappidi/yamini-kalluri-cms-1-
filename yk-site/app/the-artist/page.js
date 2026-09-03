@@ -15,7 +15,7 @@ export default async function TheArtistPage() {
 
   return (
     <>
-      <Header settings={settings} active="the-artist" />
+      <Header settings={settings} active="the-artist" theme="light" />
       <main>
         <section className="visual-hero bio-visual" style={heroStyle}>
           <div className="wrap hero-copy left-copy">

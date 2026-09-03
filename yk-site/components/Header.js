@@ -1,6 +1,6 @@
 "use client";
 
-export default function Header({ settings, active }) {
+export default function Header({ settings, active, theme }) {
   const brand = settings?.brand_name || "Likhitha Gopi";
 
   const navItems = [
@@ -13,7 +13,7 @@ export default function Header({ settings, active }) {
   ];
 
   return (
-    <header className="site">
+    <header className={`site${theme === "light" ? " nav-light" : ""}`}>
       <div className="nav-row">
         <a href="/" className="brand">{brand.toUpperCase()}</a>
         <button

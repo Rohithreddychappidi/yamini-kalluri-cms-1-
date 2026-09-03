@@ -144,6 +144,24 @@ nav.main a.active{
 
 .nav-toggle{display:none;}
 
+/* White nav text — only on the pages that opt in via <Header theme="light" /> */
+.nav-light .brand,
+.nav-light nav.main a{
+  color:#fff;
+}
+.nav-light nav.main a:hover,
+.nav-light nav.main a.active{
+  color:#fff;
+  opacity:0.7;
+}
+@media (max-width:820px){
+  /* the mobile dropdown menu always has a light background, so keep its
+     text dark for readability even on the "light" (white nav text) pages */
+  .nav-light nav.main a{ color:var(--warm-black); }
+  .nav-light nav.main a:hover,
+  .nav-light nav.main a.active{ color:var(--warm-black); opacity:1; }
+}
+
 @media (max-width:820px){
   nav.main ul{
     position:absolute;
@@ -613,6 +631,12 @@ body.mono-page .press-item a.src:hover{
 .band-dark h2,.band-dark h3{color:var(--orchid-white);}
 .band-dark .eyebrow{color:var(--chrome-white);}
 .band-dark .rule{background:rgba(204,197,185,0.25);}
+
+/* About section on the home page — heading + paragraphs in white */
+.about-light h2,
+.about-light p{
+  color:#fff;
+}
 
 /* ---------- press / quote card ---------- */
 .quote-card{
