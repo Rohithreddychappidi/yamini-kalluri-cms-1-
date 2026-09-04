@@ -13,12 +13,7 @@ export default async function MediaPage() {
   ]);
 
   const photos = gallery.filter((g) => g.type === "photo");
-  // "videos" is the new, unlimited-length field (Admin → Media → Videos).
-  // The two old single-URL fields are also honored so nothing already
-  // saved under them silently disappears.
-  const videos = [...(content.videos || []), content.video_embed_url, content.video_embed_url_2]
-    .map((v) => toYouTubeEmbedUrl(v))
-    .filter(Boolean);
+  const videos = (content.videos || []).map((v) => toYouTubeEmbedUrl(v)).filter(Boolean);
 
   return (
     <>
