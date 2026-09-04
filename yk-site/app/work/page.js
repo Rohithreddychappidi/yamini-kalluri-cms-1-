@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getSiteSettings, getPage } from "@/lib/data";
+import { toYouTubeEmbedUrl } from "@/lib/youtube";
 
 export const revalidate = 0;
 
@@ -12,6 +13,10 @@ export default async function WorkPage() {
         backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.44) 48%, rgba(0,0,0,0.98) 100%), url(${content.hero_image})`,
       }
     : undefined;
+
+  // Combine the legacy 3 fixed images with the new unlimited list, in order.
+  const rowImages = [content.row_image_1, content.row_image_2, content.row_image_3, ...(content.row_images || [])].filter(Boolean);
+  const videos = (content.videos || []).map((v) => toYouTubeEmbedUrl(v)).filter(Boolean);
 
   return (
     <>
@@ -29,7 +34,7 @@ export default async function WorkPage() {
 
         <section className="work-image-row">
           <div className="wrap image-row">
-            {[content.row_image_1, content.row_image_2, content.row_image_3].filter(Boolean).map((img, i) => (
+            {rowImages.map((img, i) => (
               <img src={img} alt="" key={i} />
             ))}
           </div>
@@ -77,6 +82,25 @@ export default async function WorkPage() {
         )}
 
         <hr className="rule" />
+
+        {videos.length > 0 && (
+          <>
+            <section className="band-dark">
+              <div className="wrap">
+                <span className="eyebrow">Videos</span>
+                <h2 style={{ margin: "0.6rem 0 2rem" }}>{content.videos_heading || "In Motion"}</h2>
+                <div className="video-grid">
+                  {videos.map((src, i) => (
+                    <div className="video-frame" key={i}>
+                      <iframe src={src} title={`Performance Reel ${i + 1}`} allowFullScreen />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+            <hr className="rule" />
+          </>
+        )}
 
         <section className="band-dark">
           <div className="wrap">

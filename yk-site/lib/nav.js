@@ -31,9 +31,15 @@ function colorSettingsKey(key) {
 }
 
 export function getNavOrder(settings) {
-  const custom = settings?.nav_order;
+  let custom = settings?.nav_order;
+  // Defensive: if an older save (before the Settings form accepted commas)
+  // stored this as one comma/newline string instead of a real array, parse
+  // it the same forgiving way so a stale save doesn't silently break the nav.
+  if (typeof custom === "string") {
+    custom = custom.split(/[\n,]+/);
+  }
   if (Array.isArray(custom) && custom.length) {
-    const valid = custom.map((k) => k.trim()).filter((k) => NAV_KEYS.includes(k));
+    const valid = custom.map((k) => String(k).trim()).filter((k) => NAV_KEYS.includes(k));
     // If the admin's custom order is missing a page, tack it on at the end
     // rather than letting that page silently disappear from the nav.
     const missing = NAV_KEYS.filter((k) => !valid.includes(k));

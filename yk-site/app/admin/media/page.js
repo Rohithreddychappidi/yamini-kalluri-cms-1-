@@ -13,8 +13,8 @@ const fields = [
   { key: "videos_heading", label: "Videos — Heading", type: "text" },
   {
     key: "videos",
-    label: "Videos (one YouTube link per line — watch, share, or embed link, any format. Add as many as you like. Leave empty to hide the Videos section entirely.)",
-    type: "list",
+    label: "Videos (one YouTube link per line, or separated by commas — watch, share, or embed link, any format. Add as many as you like. Leave empty to hide the Videos section entirely.)",
+    type: "url_list",
   },
   { key: "channel_url", label: "YouTube Channel URL", type: "text" },
 ];
