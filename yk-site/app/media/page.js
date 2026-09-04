@@ -13,12 +13,16 @@ export default async function MediaPage() {
   ]);
 
   const photos = gallery.filter((g) => g.type === "photo");
-  const video1 = toYouTubeEmbedUrl(content.video_embed_url);
-  const video2 = toYouTubeEmbedUrl(content.video_embed_url_2);
+  // "videos" is the new, unlimited-length field (Admin → Media → Videos).
+  // The two old single-URL fields are also honored so nothing already
+  // saved under them silently disappears.
+  const videos = [...(content.videos || []), content.video_embed_url, content.video_embed_url_2]
+    .map((v) => toYouTubeEmbedUrl(v))
+    .filter(Boolean);
 
   return (
     <>
-      <Header settings={settings} active="media" theme="light" />
+      <Header settings={settings} active="media" />
       <main>
         <section className="page-hero">
           <div className="wrap">
@@ -54,43 +58,38 @@ export default async function MediaPage() {
           </div>
         </section>
 
-        <hr className="rule" />
+        {(videos.length > 0 || content.channel_url) && (
+          <>
+            <hr className="rule" />
 
-        <section className="band-dark">
-          <div className="wrap">
-            <span className="eyebrow">Videos</span>
-            <h2 style={{ margin: "0.6rem 0 2rem" }}>{content.videos_heading}</h2>
-            <div className="cols-2">
-              {video1 && (
-                <div className="video-frame">
-                  <iframe src={video1} title="Performance Reel 1" allowFullScreen />
-                </div>
-              )}
-              {video2 ? (
-                <div className="video-frame">
-                  <iframe src={video2} title="Performance Reel 2" allowFullScreen />
-                </div>
-              ) : (
-                <div className="video-frame" style={{ background: "#2E2C29" }}>
-                  <span style={{ fontFamily: "var(--display)", fontStyle: "italic", color: "var(--chrome-white)" }}>
-                    More on YouTube
-                  </span>
-                </div>
-              )}
-            </div>
-            {content.channel_url && (
-              <a
-                href={content.channel_url}
-                target="_blank"
-                rel="noopener"
-                className="btn"
-                style={{ marginTop: "2rem", display: "inline-block", color: "var(--orchid-white)", borderColor: "var(--orchid-white)" }}
-              >
-                Visit Channel
-              </a>
-            )}
-          </div>
-        </section>
+            <section className="band-dark">
+              <div className="wrap">
+                <span className="eyebrow">Videos</span>
+                <h2 style={{ margin: "0.6rem 0 2rem" }}>{content.videos_heading}</h2>
+                {videos.length > 0 && (
+                  <div className="video-grid">
+                    {videos.map((src, i) => (
+                      <div className="video-frame" key={i}>
+                        <iframe src={src} title={`Performance Reel ${i + 1}`} allowFullScreen />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {content.channel_url && (
+                  <a
+                    href={content.channel_url}
+                    target="_blank"
+                    rel="noopener"
+                    className="btn"
+                    style={{ marginTop: "2rem", display: "inline-block", color: "var(--orchid-white)", borderColor: "var(--orchid-white)" }}
+                  >
+                    Visit Channel
+                  </a>
+                )}
+              </div>
+            </section>
+          </>
+        )}
       </main>
       <Footer settings={settings} />
     </>

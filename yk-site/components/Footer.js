@@ -1,14 +1,9 @@
+import { getNavItems } from "@/lib/nav";
+
 export default function Footer({ settings }) {
   const brand = settings?.brand_name || "Yamini Kalluri";
 
-  const navItems = [
-    { href: "/", label: settings?.nav_home || "Home" },
-    { href: "/the-artist", label: settings?.nav_artist || "The Artist" },
-    { href: "/work", label: settings?.nav_work || "Work" },
-    { href: "/writings", label: settings?.nav_writings || "Writings" },
-    { href: "/media", label: settings?.nav_media || "Media" },
-    { href: "/contact", label: settings?.nav_contact || "Contact" },
-  ];
+  const navItems = getNavItems(settings);
 
   return (
     <footer className="site">

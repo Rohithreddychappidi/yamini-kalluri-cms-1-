@@ -1,19 +1,14 @@
 "use client";
 
-export default function Header({ settings, active, theme }) {
-  const brand = settings?.brand_name || "Likhitha Gopi";
+import { getNavItems, getNavColor } from "@/lib/nav";
 
-  const navItems = [
-    { href: "/", label: settings?.nav_home || "Home", key: "home" },
-    { href: "/the-artist", label: settings?.nav_artist || "The Artist", key: "the-artist" },
-    { href: "/work", label: settings?.nav_work || "Work", key: "work" },
-    { href: "/writings", label: settings?.nav_writings || "Writings", key: "writings" },
-    { href: "/media", label: settings?.nav_media || "Media", key: "media" },
-    { href: "/contact", label: settings?.nav_contact || "Contact", key: "contact" },
-  ];
+export default function Header({ settings, active }) {
+  const brand = settings?.brand_name || "Likhitha Gopi";
+  const navItems = getNavItems(settings);
+  const navColor = getNavColor(active, settings);
 
   return (
-    <header className={`site${theme === "light" ? " nav-light" : ""}`}>
+    <header className="site" style={{ "--nav-color": navColor }}>
       <div className="nav-row">
         <a href="/" className="brand">{brand.toUpperCase()}</a>
         <button

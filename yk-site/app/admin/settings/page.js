@@ -8,7 +8,10 @@ export default async function AdminSettingsPage() {
   return (
     <div>
       <h1 className="admin-h1">Site Settings</h1>
-      <p className="admin-sub">Brand name, navigation labels, footer text, email and social links — used across every page.</p>
+      <p className="admin-sub">
+        Brand name, navigation labels, navigation order, per-page navigation text color, footer
+        text, email and social links — used across every page.
+      </p>
       <SettingsForm initial={settings} />
     </div>
   );
