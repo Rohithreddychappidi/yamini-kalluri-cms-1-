@@ -61,10 +61,20 @@ export default function SettingsForm({ initial }) {
               <textarea value={form[f.key] || ""} onChange={(e) => update(f.key, e.target.value)} />
             ) : f.list ? (
               <>
-                <p style={{ fontSize: "0.78rem", color: "#777", margin: "0 0 0.3rem" }}>One item per line</p>
+                <p style={{ fontSize: "0.78rem", color: "#777", margin: "0 0 0.3rem" }}>
+                  One item per line (commas also work)
+                </p>
                 <textarea
                   value={(form[f.key] || []).join("\n")}
-                  onChange={(e) => update(f.key, e.target.value.split("\n").filter((l) => l.trim() !== ""))}
+                  onChange={(e) =>
+                    update(
+                      f.key,
+                      e.target.value
+                        .split(/[\n,]+/)
+                        .map((l) => l.trim())
+                        .filter((l) => l !== "")
+                    )
+                  }
                 />
               </>
             ) : f.color ? (
