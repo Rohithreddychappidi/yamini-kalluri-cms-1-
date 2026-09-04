@@ -35,36 +35,46 @@ export default async function WorkPage() {
           </div>
         </section>
 
-        <section className="tight">
-          <div className="wrap cols-2">
-            <div>
-              <span className="eyebrow">Education</span>
-              <h3 style={{ marginTop: "0.8rem" }}>{content.education_title}</h3>
-              <p>{content.education_detail}</p>
-            </div>
-            <div>
-              <span className="eyebrow">Certificates</span>
-              <h3 style={{ marginTop: "0.8rem" }}>{content.certificates_title}</h3>
-              <p style={{ whiteSpace: "pre-line" }}>{content.certificates_detail}</p>
-            </div>
-          </div>
-        </section>
-
-        <hr className="rule" />
-
-        <section>
-          <div className="wrap">
-            <span className="eyebrow accent">Work Experience</span>
-            <div className="row-list" style={{ marginTop: "1.6rem" }}>
-              {(content.experience || []).map((row, i) => (
-                <div className="row" key={i}>
-                  <div className="yr">{row.yr}</div>
-                  <div className="ev">{row.ev}<span className="loc">{row.loc}</span></div>
+        {(content.education_title || content.education_detail || content.certificates_title || content.certificates_detail) && (
+          <section className="tight">
+            <div className="wrap cols-2">
+              {(content.education_title || content.education_detail) && (
+                <div>
+                  <span className="eyebrow">Education</span>
+                  <h3 style={{ marginTop: "0.8rem" }}>{content.education_title}</h3>
+                  <p>{content.education_detail}</p>
                 </div>
-              ))}
+              )}
+              {(content.certificates_title || content.certificates_detail) && (
+                <div>
+                  <span className="eyebrow">Certificates</span>
+                  <h3 style={{ marginTop: "0.8rem" }}>{content.certificates_title}</h3>
+                  <p style={{ whiteSpace: "pre-line" }}>{content.certificates_detail}</p>
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {(content.education_title || content.education_detail || content.certificates_title || content.certificates_detail) && (content.experience || []).length > 0 && (
+          <hr className="rule" />
+        )}
+
+        {(content.experience || []).length > 0 && (
+          <section>
+            <div className="wrap">
+              <span className="eyebrow accent">Work Experience</span>
+              <div className="row-list" style={{ marginTop: "1.6rem" }}>
+                {content.experience.map((row, i) => (
+                  <div className="row" key={i}>
+                    <div className="yr">{row.yr}</div>
+                    <div className="ev">{row.ev}<span className="loc">{row.loc}</span></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <hr className="rule" />
 
