@@ -13,19 +13,12 @@ export default async function WritingsPage() {
     <>
       <Header settings={settings} active="writings" />
       <main>
-        <section className="page-hero">
-          <div className="wrap">
-            <span className="eyebrow accent">{settings?.nav_writings || "Writings"}</span>
-            <h1 style={{ fontSize: "clamp(2.2rem,4.4vw,3.4rem)" }}>{settings?.nav_writings || "Writings"} Coverage</h1>
-          </div>
-        </section>
-
         {hasWorkSection && (
           <>
-            <section className="tight">
+            <section className="tight page-hero" style={{ paddingBottom: "3.5rem" }}>
               <div className="wrap split">
                 <div className="tx">
-                  {content.work_heading && <h2>{content.work_heading}</h2>}
+                  {content.work_heading && <h2 style={{ fontSize: "clamp(2.2rem,4.4vw,3.4rem)" }}>{content.work_heading}</h2>}
                   {content.work_paragraph && <p>{content.work_paragraph}</p>}
                   {(content.work_bullets || []).length > 0 && (
                     <ul style={{ listStyle: "none", padding: 0, margin: "1.2rem 0 0", display: "grid", gap: "0.8rem" }}>
@@ -48,6 +41,13 @@ export default async function WritingsPage() {
             <hr className="rule" />
           </>
         )}
+
+        <section className={hasWorkSection ? "tight" : "page-hero"}>
+          <div className="wrap">
+            <span className="eyebrow accent">{settings?.nav_writings || "Writings"}</span>
+            <h1 style={{ fontSize: "clamp(2.2rem,4.4vw,3.4rem)" }}>{settings?.nav_writings || "Writings"} Coverage</h1>
+          </div>
+        </section>
 
         <section className="press-gallery-section">
           <div className="wrap press-mosaic">
