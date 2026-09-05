@@ -202,6 +202,7 @@ nav.main a.active{
   position:fixed;
   inset:0;
   z-index:-2;
+  background-color:var(--chrome-white);
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -249,9 +250,10 @@ nav.main a.active{
   display:flex;
   align-items:center;
   overflow:hidden;
+  background-color:#181715;
   background-image:
     linear-gradient(90deg, rgba(37,36,34,0.74) 0%, rgba(37,36,34,0.52) 45%, rgba(37,36,34,0.2) 100%),
-    var(--hero-bg-image, url('/assets/hero-bg.png'));
+    var(--hero-bg-image, none);
   background-position:center;
   background-size:cover;
   background-repeat:no-repeat;
@@ -284,7 +286,7 @@ nav.main a.active{
     padding:3rem 0 2.4rem;
     background-image:
       linear-gradient(180deg, rgba(37,36,34,0.72) 0%, rgba(37,36,34,0.42) 58%, rgba(37,36,34,0.7) 100%),
-      var(--hero-bg-image-mobile, var(--hero-bg-image, url('/assets/hero-bg.png')));
+      var(--hero-bg-image-mobile, var(--hero-bg-image, none));
     background-position:center center;
     background-size:contain;
     background-repeat:no-repeat;

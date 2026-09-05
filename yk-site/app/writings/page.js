@@ -15,8 +15,8 @@ export default async function WritingsPage() {
       <main>
         {hasWorkSection && (
           <>
-            <section className="tight page-hero" style={{ paddingBottom: "3.5rem" }}>
-              <div className="wrap split">
+            <section className="tight page-hero" style={{ paddingTop: "10.5rem", paddingBottom: "3.5rem" }}>
+              <div className="wrap split" style={{ alignItems: "start" }}>
                 <div className="tx">
                   {content.work_heading && <h2 style={{ fontSize: "clamp(2.2rem,4.4vw,3.4rem)" }}>{content.work_heading}</h2>}
                   {content.work_paragraph && <p>{content.work_paragraph}</p>}

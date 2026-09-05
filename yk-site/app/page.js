@@ -13,8 +13,8 @@ export default async function HomePage() {
   ]);
 
   const pressImages = writings.slice(0, 8);
-  const bgImage = content.page_bg_image || "/assets/hero-bg.png";
-  const heroBgImage = content.hero_image || "/assets/hero-bg.png";
+  const bgImage = content.page_bg_image || "";
+  const heroBgImage = content.hero_image || "";
   const heroBgImageMobile = content.hero_image_mobile || heroBgImage;
 
   return (
@@ -27,8 +27,8 @@ export default async function HomePage() {
         <section
           className="hero hero-video-section"
           style={{
-            "--hero-bg-image": `url('${heroBgImage}')`,
-            "--hero-bg-image-mobile": `url('${heroBgImageMobile}')`,
+            "--hero-bg-image": heroBgImage ? `url('${heroBgImage}')` : "none",
+            "--hero-bg-image-mobile": heroBgImageMobile ? `url('${heroBgImageMobile}')` : "none",
           }}
         >
           {content.hero_video ? <HeroVideo src={content.hero_video} /> : null}
@@ -48,11 +48,11 @@ export default async function HomePage() {
                   <span className="frame-label">Image</span>
                 )}
               </div>
-              <div className="tx" style={content.about_text_color ? { color: content.about_text_color } : undefined}>
+              <div className="tx">
                 <span className="eyebrow accent">{content.about_eyebrow}</span>
-                <h2 style={content.about_text_color ? { color: content.about_text_color } : undefined}>{content.about_heading}</h2>
-                <p>{content.about_paragraph_1}</p>
-                <p>{content.about_paragraph_2}</p>
+                <h2>{content.about_heading}</h2>
+                <p style={content.about_text_color ? { color: content.about_text_color } : undefined}>{content.about_paragraph_1}</p>
+                <p style={content.about_text_color ? { color: content.about_text_color } : undefined}>{content.about_paragraph_2}</p>
                 <a href="/the-artist" className="btn">Learn More</a>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default async function HomePage() {
 
           <section>
             <div className="wrap">
-              <span className="eyebrow accent">{settings?.nav_writings || "Writings"}</span>
+              <span className="eyebrow accent">Writings</span>
               <div className="home-press-stack">
                 {pressImages.map((w) => (
                   <a href={`/writings/${w.slug}`} key={w.id}>

@@ -21,7 +21,7 @@ const fields = [
   { key: "hero_video", label: "Hero — Background Video (optional; if set, plays on top of the Hero Banner Image while the Hero is in view)", type: "video" },
   { key: "about_eyebrow", label: "About — Eyebrow Label", type: "text" },
   { key: "about_heading", label: "About — Heading", type: "text" },
-  { key: "about_text_color", label: "About Section Text Color (pick a color that reads well against your Page Background image; leave blank for the default dark text)", type: "color" },
+  { key: "about_text_color", label: "About Paragraph Text Color (heading stays black; this only affects the two paragraphs below it — pick a color that reads well against your Page Background image; leave blank for the default dark text)", type: "color" },
   { key: "about_image", label: "About — Image", type: "image" },
   { key: "about_image_caption", label: "About — Image Caption", type: "text" },
   { key: "about_paragraph_1", label: "About — Paragraph 1", type: "textarea" },
