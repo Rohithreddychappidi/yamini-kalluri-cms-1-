@@ -5,14 +5,14 @@ export const revalidate = 0;
 
 const fields = [
   { key: "hero_image", label: "Hero Background Image", type: "image" },
-  { key: "hero_heading", label: "Hero Heading", type: "text" },
-  { key: "hero_paragraph", label: "Hero Paragraph", type: "textarea" },
-  { key: "hero_link_label", label: "Hero Link Label", type: "text" },
-  { key: "hero_link_url", label: "Hero Link URL", type: "text" },
+  { key: "hero_heading", label: "Hero Heading (centered on the banner)", type: "text" },
+  { key: "hero_paragraph", label: "Intro Paragraph (shown just below the hero banner, not on top of the image)", type: "textarea" },
+  { key: "hero_link_label", label: "Intro Link Label", type: "text" },
+  { key: "hero_link_url", label: "Intro Link URL", type: "text" },
   { key: "row_image_1", label: "Image Row — Image 1 (legacy, still supported)", type: "image" },
   { key: "row_image_2", label: "Image Row — Image 2 (legacy, still supported)", type: "image" },
   { key: "row_image_3", label: "Image Row — Image 3 (legacy, still supported)", type: "image" },
-  { key: "row_images", label: "Image Row — Add More Images (no limit)", type: "image_list" },
+  { key: "row_images", label: "Image Row — Photos (add as many as you like, each with an optional caption)", type: "image_caption_list" },
   {
     key: "videos",
     label: "Videos, shown before Performances (one YouTube link per line, or separated by commas — any format. Leave empty to hide this section.)",

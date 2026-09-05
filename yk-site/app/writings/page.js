@@ -1,11 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getSiteSettings, getWritings } from "@/lib/data";
+import { getSiteSettings, getWritings, getPage } from "@/lib/data";
 
 export const revalidate = 0;
 
 export default async function WritingsPage() {
-  const [settings, writings] = await Promise.all([getSiteSettings(), getWritings()]);
+  const [settings, writings, content] = await Promise.all([getSiteSettings(), getWritings(), getPage("writings")]);
+
+  const hasWorkSection = content.work_heading || content.work_paragraph || (content.work_bullets || []).length > 0 || content.work_image;
 
   return (
     <>
@@ -17,6 +19,35 @@ export default async function WritingsPage() {
             <h1 style={{ fontSize: "clamp(2.2rem,4.4vw,3.4rem)" }}>{settings?.nav_writings || "Writings"} Coverage</h1>
           </div>
         </section>
+
+        {hasWorkSection && (
+          <>
+            <section className="tight">
+              <div className="wrap split">
+                <div className="tx">
+                  {content.work_heading && <h2>{content.work_heading}</h2>}
+                  {content.work_paragraph && <p>{content.work_paragraph}</p>}
+                  {(content.work_bullets || []).length > 0 && (
+                    <ul style={{ listStyle: "none", padding: 0, margin: "1.2rem 0 0", display: "grid", gap: "0.8rem" }}>
+                      {content.work_bullets.map((b, i) => (
+                        <li key={i} style={{ paddingLeft: "1.2rem", position: "relative" }}>
+                          <span style={{ position: "absolute", left: 0 }}>—</span>
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                {content.work_image && (
+                  <div>
+                    <img src={content.work_image} alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+                  </div>
+                )}
+              </div>
+            </section>
+            <hr className="rule" />
+          </>
+        )}
 
         <section className="press-gallery-section">
           <div className="wrap press-mosaic">

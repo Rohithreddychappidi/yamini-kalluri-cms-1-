@@ -36,6 +36,7 @@ export default function HeroVideo({ src }) {
       muted
       loop
       playsInline
+      preload="auto"
     />
   );
 }

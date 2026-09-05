@@ -22,7 +22,7 @@ export default async function HomePage() {
       {/* Fixed, non-scrolling background image for the whole home page */}
       <div className="home-fixed-bg" style={{ backgroundImage: `url('${bgImage}')` }} />
 
-      <Header settings={settings} active="home" theme="light" />
+      <Header settings={settings} active="home" />
       <main className="home-main">
         <section
           className="hero hero-video-section"
@@ -32,14 +32,14 @@ export default async function HomePage() {
           }}
         >
           {content.hero_video ? <HeroVideo src={content.hero_video} /> : null}
-          <div className="wrap">
+          <div className="wrap" style={content.hero_text_color ? { color: content.hero_text_color } : undefined}>
             <h1>{content.hero_title}</h1>
             <div className="role">{content.hero_role}</div>
           </div>
         </section>
 
         <div className="home-glass">
-          <section className="tight about-light">
+          <section className="tight">
             <div className="wrap split">
               <div className="ph" data-cap={content.about_image_caption}>
                 {content.about_image ? (
@@ -48,9 +48,9 @@ export default async function HomePage() {
                   <span className="frame-label">Image</span>
                 )}
               </div>
-              <div className="tx">
+              <div className="tx" style={content.about_text_color ? { color: content.about_text_color } : undefined}>
                 <span className="eyebrow accent">{content.about_eyebrow}</span>
-                <h2>{content.about_heading}</h2>
+                <h2 style={content.about_text_color ? { color: content.about_text_color } : undefined}>{content.about_heading}</h2>
                 <p>{content.about_paragraph_1}</p>
                 <p>{content.about_paragraph_2}</p>
                 <a href="/the-artist" className="btn">Learn More</a>
@@ -96,20 +96,6 @@ export default async function HomePage() {
               <a href="/writings" className="btn" style={{ marginTop: "1.8rem", display: "inline-block" }}>
                 Read More
               </a>
-            </div>
-          </section>
-
-          <hr className="rule" />
-
-          <section className="tight">
-            <div className="wrap">
-              <span className="eyebrow accent">Stay Connected</span>
-              <h2 style={{ margin: "0.6rem 0 2rem", color: "#fff" }}>{content.connected_heading}</h2>
-              <div className="gallery">
-                {(content.connected_tiles || []).map((tile, i) => (
-                  <div className="g-item no-photo" key={i}><span>{tile}</span></div>
-                ))}
-              </div>
             </div>
           </section>
         </div>

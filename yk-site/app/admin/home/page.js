@@ -17,9 +17,11 @@ const fields = [
   },
   { key: "hero_title", label: "Hero Title", type: "text" },
   { key: "hero_role", label: "Hero Role / Subtitle", type: "text" },
+  { key: "hero_text_color", label: "Hero Text Color (pick a color that reads well against your Hero Banner Image; leave blank for the default)", type: "color" },
   { key: "hero_video", label: "Hero — Background Video (optional; if set, plays on top of the Hero Banner Image while the Hero is in view)", type: "video" },
   { key: "about_eyebrow", label: "About — Eyebrow Label", type: "text" },
   { key: "about_heading", label: "About — Heading", type: "text" },
+  { key: "about_text_color", label: "About Section Text Color (pick a color that reads well against your Page Background image; leave blank for the default dark text)", type: "color" },
   { key: "about_image", label: "About — Image", type: "image" },
   { key: "about_image_caption", label: "About — Image Caption", type: "text" },
   { key: "about_paragraph_1", label: "About — Paragraph 1", type: "textarea" },
@@ -30,8 +32,6 @@ const fields = [
   { key: "work_image_caption", label: "Work Section — Image Caption", type: "text" },
   { key: "work_paragraph_1", label: "Work Section — Paragraph 1", type: "textarea" },
   { key: "work_paragraph_2", label: "Work Section — Paragraph 2", type: "textarea" },
-  { key: "connected_heading", label: "Stay Connected — Heading", type: "text" },
-  { key: "connected_tiles", label: "Stay Connected — Tile Labels", type: "list" },
 ];
 
 export default async function AdminHomePage() {
